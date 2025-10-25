@@ -8,8 +8,14 @@ const articleSchema = new mongoose.Schema({
     image: { type: String },
     date: { type: Date, default: Date.now },
     isFeatured: { type: Boolean, default: false },
-    excerpt: { type: String, maxlength: 1000, required: false },
-    content: { type: String, required: true, maxlength: 20000 }
+    content: { type: String, required: true, maxlength: 20000 },
+    question: { type: String, maxlength: 1000, required: false },
+    language: {
+        type: String,
+        required: true,
+        enum: ['English', 'Kannada'],
+        default: 'English'
+    }
 });
 
 export default mongoose.model("Article", articleSchema);
